@@ -26,7 +26,7 @@
                                     {% for entry in admin_log %}
                                         <tr>
                                             <th class="text-gray-900" scope="row">
-                                                {{ entry.object_repr }}
+                                                <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
                                             </th>
                                             <td class="fw-bolder text-gray-500">
                                                 {% if entry.content_type %}
@@ -35,13 +35,6 @@
                                                 {% else %}
                                                     <p class="text-muted">{% trans 'Unknown content' %}</p>
                                                 {% endif %}
-                                            </td>
-                                            <td class="fw-bolder text-gray-500">
-                                                <a href="{{ entry.get_admin_url }}" type="button" rel="tooltip" title=""
-                                                   class="btn btn-link"
-                                                   data-original-title="{{ entry.object_repr }}">
-                                                    <i class="tim-icons icon-settings"></i>
-                                                </a>
                                             </td>
                                             <td class="fw-bolder text-gray-500">
                                                 {% if entry.is_addition %}
